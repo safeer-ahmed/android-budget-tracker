@@ -1,12 +1,12 @@
+.DS_Store
+/build
+*.log
+
 # Gradle files
 .gradle/
-build/
 
 # Local configuration file (sdk path, etc)
 local.properties
-
-# Log/OS Files
-*.log
 
 # Android Studio generated files and folders
 captures/
@@ -21,13 +21,6 @@ output.json
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
-
-# Keystore files
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
 
 # Android Profiling
 *.hprof
