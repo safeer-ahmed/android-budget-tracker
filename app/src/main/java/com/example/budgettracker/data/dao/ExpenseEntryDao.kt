@@ -16,6 +16,4 @@ interface ExpenseEntryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertEntry(entry: ExpenseEntry)
-
-
 }

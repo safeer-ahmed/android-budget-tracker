@@ -9,12 +9,12 @@ class ExpenseEntryRepositoryImpl @Inject constructor(
     private val expenseEntryDao: ExpenseEntryDao
 ) : ExpenseEntryRepository {
 
-    override fun getAllEntries(): Flow<List<ExpenseEntry>> {
-        return expenseEntryDao.getAllEntries()
-    }
-
     override fun insertEntry(entry: ExpenseEntry) {
         expenseEntryDao.insertEntry(entry)
+    }
+
+    override fun getAllExpenses(): Flow<List<ExpenseEntry>> {
+        return expenseEntryDao.getAllEntries()
     }
 
 }

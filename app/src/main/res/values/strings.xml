@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BudgetTracker</string>
+    <string name="budget_month">Budget for</string>
+    <string name="total_budget">Total Budget</string>
+    <string name="total_expenses">Total expenses</string>
+    <string name="remaining_budget">Remaining</string>
+    <string name="spent">Spent</string>
+    <string name="set_budget">Please set your budget</string>
+    <string name="set_budget_for">Set budget for %s</string>
 </resources>

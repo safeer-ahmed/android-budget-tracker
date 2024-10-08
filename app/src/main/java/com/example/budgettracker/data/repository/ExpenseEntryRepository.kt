@@ -5,7 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface ExpenseEntryRepository {
 
-    fun getAllEntries(): Flow<List<ExpenseEntry>>
-
     fun insertEntry(entry: ExpenseEntry)
+
+    fun getAllExpenses(): Flow<List<ExpenseEntry>>
+
 }
