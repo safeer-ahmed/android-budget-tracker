@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -70,11 +69,14 @@ class MainActivity : ComponentActivity() {
         navController: androidx.navigation.NavController,
         viewModel: DashboardViewModel = hiltViewModel()
     ) {
-        val dashboardUIState by viewModel.dashboardUIState.collectAsState()
+        val dashboardUIState by viewModel.dashboardUIState
 
-        Dashboard(dashboardUIState,
+        Dashboard(
+            dashboardUIState = dashboardUIState,
             onBudgetUpdateClick = {
-                navController.navigate(Route.SetBudget.screenName)
+                navController.navigate(
+                    Route.SetBudget.screenName
+                )
             })
     }
 
@@ -83,8 +85,10 @@ class MainActivity : ComponentActivity() {
         navController: androidx.navigation.NavController,
         viewModel: SetBudgetViewModel = hiltViewModel()
     ) {
+        val monthBudget by viewModel.monthBudget
 
         SetBudgetScreen(
+            monthBudget = monthBudget,
             onBudgetUpdateClick = { it ->
                 viewModel.setBudget(it)
                 navController.popBackStack()

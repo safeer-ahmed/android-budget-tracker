@@ -16,4 +16,8 @@ class MonthBudgetRepositoryImpl @Inject constructor(
     override suspend fun getMonthBudget(month: String, year: Int): Flow<MonthBudget?> {
         return monthBudgetDao.getMonthBudgetByName(month, year)
     }
+
+    override suspend fun getMonthBudgetOnce(month: String, year: Int): MonthBudget? {
+        return monthBudgetDao.getMonthBudgetByNameOnce(month, year)
+    }
 }

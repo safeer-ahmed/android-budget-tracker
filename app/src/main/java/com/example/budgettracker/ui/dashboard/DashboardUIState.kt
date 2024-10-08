@@ -6,7 +6,7 @@ import java.math.BigDecimal
 @Immutable
 data class DashboardUIState(
     val currentMonth: String,
-    val totalBudget: BigDecimal?,
+    val totalBudget: String?,
     val totalExpenses: BigDecimal,
     val remainingBudget: BigDecimal
 )

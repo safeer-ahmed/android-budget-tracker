@@ -18,14 +18,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.budgettracker.R
+import com.example.budgettracker.data.entity.MonthBudget
 import com.example.budgettracker.ui.commons.NumberInputField
 
 @Composable
 fun SetBudgetScreen(
-    onBudgetUpdateClick: (budget: String) -> Unit = {}
+    onBudgetUpdateClick: (budget: String) -> Unit = {},
+    monthBudget: MonthBudget
 ) {
 
-    var input by rememberSaveable { mutableStateOf("") }
+    var input by rememberSaveable(monthBudget) { mutableStateOf(monthBudget.budgetAmount) }
 
     Column(
         modifier = Modifier
@@ -41,12 +43,18 @@ fun SetBudgetScreen(
 
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    text = stringResource(id = R.string.set_budget_for, "October"),
+                    text = if (monthBudget.budgetAmount.isNotEmpty())
+                        stringResource(
+                            id = R.string.update_budget_for,
+                            monthBudget.monthName
+                        )
+                    else stringResource(id = R.string.set_budget_for, monthBudget.monthName),
                     fontSize = 24.sp,
                     color = Color.White
                 )
 
                 NumberInputField(
+                    input = input,
                     onValueChange = {
                         input = it
                     },
@@ -62,5 +70,9 @@ fun SetBudgetScreen(
 @Preview
 @Composable
 fun PreviewSetBudgetScreen() {
-    SetBudgetScreen()
+    SetBudgetScreen(
+        monthBudget = MonthBudget(
+            "October", 2023, "200"
+        )
+    )
 }

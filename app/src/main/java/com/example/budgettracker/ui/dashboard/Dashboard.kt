@@ -66,11 +66,10 @@ fun Dashboard(
 
                 IconButton(
                     modifier = Modifier
-                        .align(Alignment.End),
-                    onClick = onBudgetUpdateClick
+                        .align(Alignment.End), onClick = onBudgetUpdateClick
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.add_budget),
+                        painter = painterResource(id = if (isBudgetValid) R.drawable.edit else R.drawable.add),
                         contentDescription = "Edit"
                     )
                 }
@@ -122,13 +121,10 @@ fun Dashboard(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewDashboard() {
-    Dashboard(
-        DashboardUIState(
-            currentMonth = "October",
-            totalBudget = BigDecimal(300),
-            totalExpenses = BigDecimal(200),
-            remainingBudget = BigDecimal(100)
-        ),
-        onBudgetUpdateClick = {}
-    )
+    Dashboard(DashboardUIState(
+        currentMonth = "October",
+        totalBudget = "300",
+        totalExpenses = BigDecimal(200),
+        remainingBudget = BigDecimal(100)
+    ), onBudgetUpdateClick = {})
 }

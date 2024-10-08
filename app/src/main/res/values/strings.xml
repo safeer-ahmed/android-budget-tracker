@@ -7,4 +7,5 @@
     <string name="spent">Spent</string>
     <string name="set_budget">Please set your budget</string>
     <string name="set_budget_for">Set budget for %s</string>
+    <string name="update_budget_for">Update budget for %s</string>
 </resources>

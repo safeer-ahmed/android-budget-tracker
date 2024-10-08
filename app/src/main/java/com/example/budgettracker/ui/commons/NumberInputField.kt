@@ -7,10 +7,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,18 +16,16 @@ import com.example.budgettracker.util.Helpers
 @Composable
 fun NumberInputField(
     onValueChange: (value: String) -> Unit,
-    onDoneAction: () -> Unit
+    onDoneAction: () -> Unit,
+    input: String = ""
 ) {
-    var input by rememberSaveable { mutableStateOf("") }
-
     TextField(
         value = input,
         onValueChange = { value ->
             // Ensure the input is numeric only
             val decimalCount = value.count { it == '.' }
             if (decimalCount <= 1 && Helpers.isNumeric(value)) {
-                input = value
-                onValueChange(input)
+                onValueChange(value)
             }
         },
         label = { Text(text = "Enter a number") },
