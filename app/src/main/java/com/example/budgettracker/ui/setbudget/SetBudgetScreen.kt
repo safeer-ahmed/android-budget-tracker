@@ -1,5 +1,6 @@
 package com.example.budgettracker.ui.setbudget
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -59,7 +60,11 @@ fun SetBudgetScreen(
                         input = it
                     },
                     onDoneAction = {
-                        onBudgetUpdateClick(input)
+                        if (input.isNotEmpty()) {
+                            onBudgetUpdateClick(input)
+                        } else {
+                            Log.e("SetBudgetScreen", "Please enter a valid number")
+                        }
                     }
                 )
             }
