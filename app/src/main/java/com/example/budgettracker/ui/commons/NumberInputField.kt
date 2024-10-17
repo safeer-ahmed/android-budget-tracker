@@ -45,6 +45,34 @@ fun NumberInputField(
 }
 
 @Composable
+fun TextInputField(
+    onValueChange: (value: String) -> Unit,
+    onDoneAction: () -> Unit,
+    hint: String = "",
+    input: String = ""
+) {
+    OutlinedTextField(
+        value = input,
+        onValueChange = { value ->
+            onValueChange(value)
+        },
+        label = { Text(text = hint) },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text,
+            imeAction = androidx.compose.ui.text.input.ImeAction.Next,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                onDoneAction()
+            }
+        )
+    )
+}
+
+@Composable
 @Preview(showBackground = true)
 fun PreviewNumberInputField() {
     NumberInputField(

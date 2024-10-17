@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.budgettracker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.budgettracker"
@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     ksp(libs.hilt.compiler)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
