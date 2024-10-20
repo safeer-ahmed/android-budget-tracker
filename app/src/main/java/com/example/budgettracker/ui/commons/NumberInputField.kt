@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -19,7 +19,7 @@ fun NumberInputField(
     onDoneAction: () -> Unit,
     input: String = ""
 ) {
-    TextField(
+    OutlinedTextField(
         value = input,
         onValueChange = { value ->
             // Ensure the input is numeric only
@@ -32,6 +32,34 @@ fun NumberInputField(
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number,
             imeAction = androidx.compose.ui.text.input.ImeAction.Done,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                onDoneAction()
+            }
+        )
+    )
+}
+
+@Composable
+fun TextInputField(
+    onValueChange: (value: String) -> Unit,
+    onDoneAction: () -> Unit,
+    hint: String = "",
+    input: String = ""
+) {
+    OutlinedTextField(
+        value = input,
+        onValueChange = { value ->
+            onValueChange(value)
+        },
+        label = { Text(text = hint) },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text,
+            imeAction = androidx.compose.ui.text.input.ImeAction.Next,
         ),
         modifier = Modifier
             .fillMaxWidth()

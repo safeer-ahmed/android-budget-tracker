@@ -8,4 +8,6 @@
     <string name="set_budget">Please set your budget</string>
     <string name="set_budget_for">Set budget for %s</string>
     <string name="update_budget_for">Update budget for %s</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="expense_name">Where did you spend</string>
 </resources>

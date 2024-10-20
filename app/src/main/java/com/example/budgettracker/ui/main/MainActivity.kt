@@ -73,11 +73,17 @@ class MainActivity : ComponentActivity() {
 
         Dashboard(
             dashboardUIState = dashboardUIState,
-            onBudgetUpdateClick = {
+            onBudgetUpdatePressed = {
                 navController.navigate(
                     Route.SetBudget.screenName
                 )
-            })
+            },
+            onAddExpensePressed = {
+                navController.navigate(
+                    Route.AddExpense.screenName
+                )
+            }
+        )
     }
 
     @Composable
